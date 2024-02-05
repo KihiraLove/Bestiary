@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.Date;
 
 public class BeastEntry {
@@ -6,7 +7,7 @@ public class BeastEntry {
 	private final String altIdentifier;
 	private final boolean members;
 	private boolean isNew;
-	private final Date dateAdded;
+	private final LocalDate dateAdded;
 	private final int combat;
 	private final int health;
 	private final int attack;
@@ -14,7 +15,7 @@ public class BeastEntry {
 	private final int magic;
 	private final int range;
 
-	public BeastEntry(String name, String imageLink, String altIdentifier, boolean members, boolean isNew, Date dateAdded, int combat, int health, int attack, int defence, int magic, int range) {
+	public BeastEntry(String name, String imageLink, String altIdentifier, boolean members, boolean isNew, LocalDate dateAdded, int combat, int health, int attack, int defence, int magic, int range) {
 		this.name = name;
 		this.imageLink = imageLink;
 		this.altIdentifier = altIdentifier;
@@ -29,6 +30,21 @@ public class BeastEntry {
 		this.range = range;
 	}
 
+	public BeastEntry() {
+		this.name = "";
+		this.imageLink = "";
+		this.altIdentifier = "";
+		this.members = false;
+		this.isNew = false;
+		this.dateAdded = LocalDate.now();
+		this.combat = 1;
+		this.health = 1;
+		this.attack = 1;
+		this.defence = 1;
+		this.magic = 1;
+		this.range = 1;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -38,7 +54,7 @@ public class BeastEntry {
 		return members;
 	}
 	public boolean isNew() { return isNew; }
-	public Date getDateAdded() { return dateAdded; }
+	public LocalDate getDateAdded() { return dateAdded; }
 	public void setNew(boolean aNew) { isNew = aNew; }
 	public int getCombat() {
 		return combat;

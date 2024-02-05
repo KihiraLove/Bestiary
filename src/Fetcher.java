@@ -10,11 +10,18 @@ import java.util.List;
 public class Fetcher {
 	int[] ranges = {1, 10, 11, 20, 21, 30, 31, 40, 41, 50, 51, 60, 61, 70, 71, 80, 81, 90, 91, 100, 101, 110, 111, 120, 121, 130, 131, 140, 141, 150, 151, 160, 161, 170, 171, 180, 181, 190, 191, 200, 201, 400, 401, 2000};
 	public Fetcher() throws IOException {
+		/*
 		for (int i = 0; i < ranges.length; i+=2) {
 			System.out.println("" + ranges[i]+", " + ranges[i+1]);
 		}
 		List<List<String>> allEntries = new ArrayList<>();
 		allEntries.add(Arrays.stream(GetHtmlEntriesInRange(1, 10)).toList());
+		*/
+
+	}
+
+	public String[] test() throws IOException {
+		return GetHtmlEntriesInRange(1, 10);
 	}
 
 	private List<BeastEntry> ParseHtmlEntries(String[] htmlEntries){
@@ -26,7 +33,7 @@ public class Fetcher {
 	}
 
 	private BeastEntry ParseHtmlEntry(String htmlEntry) {
-
+		return new BeastEntry();
 	}
 
 	private String[] GetHtmlEntriesInRange(int lower, int upper) throws IOException{
