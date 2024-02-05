@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="08d48948-b445-49c9-bc7c-cdec88bdc248" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BeastEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BeastEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Fetcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fetcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteToFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteToFile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,9 +43,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Github/JavaCourseFirstApp/SpotifyImitation",
+    "last_opened_file_path": "C:/Users/dkert/Desktop/Bestiary",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -76,6 +73,7 @@
       <updated>1707066230757</updated>
       <workItem from="1707066232455" duration="7901000" />
       <workItem from="1707123150603" duration="4084000" />
+      <workItem from="1707138542376" duration="912000" />
     </task>
     <servers />
   </component>
