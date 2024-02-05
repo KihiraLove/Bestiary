@@ -17,6 +17,18 @@ public class Fetcher {
 		allEntries.add(Arrays.stream(GetHtmlEntriesInRange(1, 10)).toList());
 	}
 
+	private List<BeastEntry> ParseHtmlEntries(String[] htmlEntries){
+		List<BeastEntry> entries = new ArrayList<>();
+		for (String str : htmlEntries){
+			entries.add(ParseHtmlEntry(str));
+		}
+		return entries;
+	}
+
+	private BeastEntry ParseHtmlEntry(String htmlEntry) {
+
+	}
+
 	private String[] GetHtmlEntriesInRange(int lower, int upper) throws IOException{
 			HttpURLConnection connection = getHttpURLConnection(lower, upper);
 			if (connection.getResponseCode() != 200) {
