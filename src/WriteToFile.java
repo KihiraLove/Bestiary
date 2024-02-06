@@ -1,8 +1,15 @@
+import Entries.BeastEntry;
+
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class WriteToFile {
 	private WriteToFile(){}
+
+	public static void SerializeEntriesToJson(List<List<BeastEntry>> entries){
+
+	}
 
 	public static void WriteSingleHtmlEntry(String entry){
 		try (FileWriter writer = new FileWriter("izzie.html")) {

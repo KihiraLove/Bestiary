@@ -1,13 +1,15 @@
+import Entries.BeastEntry;
+
 import java.io.IOException;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 	    try {
-		    Fetcher f = new Fetcher();
-            String[] entries = f.test();
-            WriteToFile.WriteSingleHtmlEntry(entries[0]);
-            WriteToFile.WriteAllHtmlEntries(entries);
-	    } catch (IOException e) {
+		    List<List<BeastEntry>> allEntries = FetchFromApi.FetchAllEntries();
+			WriteToFile.SerializeEntriesToJson(allEntries);
+
+	    } catch (IOException | InterruptedException e) {
 		    throw new RuntimeException(e);
 	    }
     }
