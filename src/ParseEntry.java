@@ -21,7 +21,12 @@ public class ParseEntry {
 		String imageLink = htmlEntry.substring(htmlEntry.indexOf("/images/"), htmlEntry.indexOf("\\\" decoding")).replace("/images/", "https://oldschool.runescape.wiki/images/");
 		String imageTitle = htmlEntry.substring(htmlEntry.indexOf("title=\\\"") + 8, htmlEntry.indexOf("\\\" width"));
 		int imageWidth = Integer.parseInt(htmlEntry.substring(htmlEntry.indexOf("width=\\\"") + 8, htmlEntry.indexOf("\\\" height")));
-		int imageHeight = Integer.parseInt(htmlEntry.substring(htmlEntry.indexOf("height=\\\"") + 9, htmlEntry.indexOf("\\\" srcset")));
+		int imageHeight;
+		try {
+			imageHeight = Integer.parseInt(htmlEntry.substring(htmlEntry.indexOf("height=\\\"") + 9, htmlEntry.indexOf("\\\" srcset")));
+		} catch(StringIndexOutOfBoundsException e){
+			imageHeight = Integer.parseInt(htmlEntry.substring(htmlEntry.indexOf("height=\\\"") + 9, htmlEntry.indexOf("\\\" data-file-width")));
+		}
 		String imageSrcset = htmlEntry.substring(htmlEntry.indexOf("srcset=\\\"") + 9, htmlEntry.indexOf("\\\" data-file-width")).replace("/images/", "https://oldschool.runescape.wiki/images/");
 		int imageDataFileWidth = Integer.parseInt(htmlEntry.substring(htmlEntry.indexOf("data-file-width=\\\"") + 18, htmlEntry.indexOf("\\\" data-file-height")));
 		int imageDataFileHeight = Integer.parseInt(htmlEntry.substring(htmlEntry.indexOf("data-file-height=\\\"") + 19, htmlEntry.indexOf("\\\" /></td><td>")));
@@ -32,24 +37,38 @@ public class ParseEntry {
 		boolean members = htmlEntry.contains("alt=\\\"Members\\\"");
 		boolean aNew = true;
 		LocalDate added = LocalDate.now();
-		String[] substringsForCombats = htmlEntry.split("/></td><td>")[2].replace("</td>","").split("<td>");
+		String[] substringsForCombats;
+		try {
+			substringsForCombats = htmlEntry.split("/></td><td>")[2].replace("</td>", "").split("<td>");
+		} catch(ArrayIndexOutOfBoundsException e){
+			substringsForCombats = htmlEntry.split("/></td><td>")[1].replace("</td>", "").split("<td>");
+		}
+		String[] newSubstring = new String[6];
+		System.arraycopy(substringsForCombats, 0, newSubstring, 0, substringsForCombats.length);
 
-		if(substringsForCombats.length < 6){
-			String[] newSubstring = new String[6];
-			System.arraycopy(substringsForCombats, 0, newSubstring, 0, substringsForCombats.length);
-			for (int i = substringsForCombats.length; i < 6; i++)
-			{
+		for (int i = 0; i < 6; i++){
+            System.out.println(newSubstring[i]);
+			if (newSubstring[i] == null || newSubstring[i].isEmpty() || newSubstring[i].isBlank()){
 				newSubstring[i] = "0";
 			}
-			substringsForCombats = newSubstring;
 		}
 
-		int combat = Integer.parseInt(substringsForCombats[0]);
-		int health = Integer.parseInt(substringsForCombats[1]);
-		int attack = Integer.parseInt(substringsForCombats[2]);
-		int defence = Integer.parseInt(substringsForCombats[3]);
-		int magic = Integer.parseInt(substringsForCombats[4]);
-		int range = Integer.parseInt(substringsForCombats[5]);
+		System.out.println(name);
+		System.out.println(newSubstring[0]);
+		System.out.println(newSubstring[1]);
+		System.out.println(newSubstring[2]);
+		System.out.println(newSubstring[3]);
+		System.out.println(newSubstring[4]);
+		System.out.println(newSubstring[5]);
+		System.out.println("------------");
+
+
+		int combat = Integer.parseInt(newSubstring[0]);
+		int health = Integer.parseInt(newSubstring[1]);
+		int attack = Integer.parseInt(newSubstring[2]);
+		int defence = Integer.parseInt(newSubstring[3]);
+		int magic = Integer.parseInt(newSubstring[4]);
+		int range = Integer.parseInt(newSubstring[5]);
 
 		return new BeastEntry(name,
 							new BeastEntry.ImageEntry(imageAltText,
