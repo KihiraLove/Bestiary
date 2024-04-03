@@ -69,6 +69,6 @@ public class FetchFromApi {
 	}
 
 	private static String CleanUpResponse(StringBuilder input){
-		return input.toString().split("/></th></tr>")[1].split("</tbody></table></div></div>")[0];
+		return input.toString().split("/></a></th></tr><tr>")[1].split("</tbody></table></div></div>")[0];
 	}
 }
