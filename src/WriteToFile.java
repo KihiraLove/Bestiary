@@ -22,7 +22,7 @@ public class WriteToFile {
 
 
 	public static void WriteSingleHtmlEntry(String entry){
-		try (FileWriter writer = new FileWriter("izzie.html")) {
+		try (FileWriter writer = new FileWriter("/data/izzie.html")) {
 			writer.write(entry);
 			System.out.println("Entry written to izzy.html");
 		} catch (IOException e) {
@@ -31,7 +31,7 @@ public class WriteToFile {
 	}
 
 	public static void WriteAllHtmlEntries(String[] entries){
-		try (FileWriter writer = new FileWriter("jsondata.html")) {
+		try (FileWriter writer = new FileWriter("/data/jsondata.html")) {
 			for (String entry : entries){
 				writer.write(entry);
 			}

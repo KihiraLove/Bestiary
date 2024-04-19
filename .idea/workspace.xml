@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08d48948-b445-49c9-bc7c-cdec88bdc248" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/izzie.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsondata.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteToFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteToFile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +91,7 @@
       <workItem from="1708519229856" duration="1322000" />
       <workItem from="1708954674605" duration="1238000" />
       <workItem from="1712168320018" duration="8072000" />
-      <workItem from="1713527804379" duration="621000" />
+      <workItem from="1713527804379" duration="845000" />
     </task>
     <servers />
   </component>
