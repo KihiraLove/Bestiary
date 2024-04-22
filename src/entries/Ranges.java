@@ -1,4 +1,4 @@
-package Entries;
+package entries;
 
 public class Ranges {
 	record Range(int lower, int upper) {}
@@ -35,15 +35,15 @@ public class Ranges {
 									new Range(401, 2000)};
 	}
 
-	public int GetLower(int index){
+	public int getLower(int index){
 		return ranges[index].lower();
 	}
 
-	public int GetUpper(int index){
+	public int getUpper(int index){
 		return ranges[index].upper();
 	}
 
-	public int GetLengthOfRanges(){
+	public int getLengthOfRanges(){
 		return  ranges.length;
 	}
 }

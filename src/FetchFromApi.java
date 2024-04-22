@@ -1,5 +1,5 @@
-import Entries.BeastEntry;
-import Entries.Ranges;
+import entries.BeastEntry;
+import entries.Ranges;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,28 +12,28 @@ import java.util.List;
 public class FetchFromApi {
 	private FetchFromApi() {}
 
-	public static String[] test() throws IOException {
-		return GetHtmlEntriesInRange(1, 10);
+	public static String[] test() throws IOException, HttpResponseException {
+		return getHtmlEntriesInRange(1, 10);
 	}
 
-	public static List<List<BeastEntry>> FetchAllEntries() throws IOException, InterruptedException {
+	public static List<List<BeastEntry>> fetchAllEntries() throws IOException, InterruptedException, HttpResponseException {
 		Ranges ranges = Ranges.getInstance();
 		List<List<BeastEntry>> allEntries = new ArrayList<>();
 
-		for (int i = 0; i < ranges.GetLengthOfRanges(); i++) {
-			allEntries.add(ParseEntry.ParseHtmlToEntries(GetHtmlEntriesInRange(ranges.GetLower(i), ranges.GetUpper(i))));
-			System.out.println("Waiting 1 second to avoid DDOSing the OSRS WIKI");
-			Thread.sleep(1000);
+		for (int i = 0; i < ranges.getLengthOfRanges(); i++) {
+			allEntries.add(ParseEntry.ParseHtmlToEntries(getHtmlEntriesInRange(ranges.getLower(i), ranges.getUpper(i))));
+			System.out.println("Waiting 0.2 second to avoid DDOSing the OSRS WIKI");
+			Thread.sleep(200);
 		}
 
 		return allEntries;
 	}
 
-	private static String[] GetHtmlEntriesInRange(int lower, int upper) throws IOException{
+	private static String[] getHtmlEntriesInRange(int lower, int upper) throws IOException, HttpResponseException {
 		System.out.println("Fetching from API in range: " + lower + " - " + upper);
 		HttpURLConnection connection = getHttpURLConnection(lower, upper);
 		if (connection.getResponseCode() != 200) {
-			throw new RuntimeException("Failed : HTTP Error code : " + connection.getResponseCode());
+			throw new HttpResponseException("Failed : HTTP Error code : " + connection.getResponseCode());
 		}
 
 		InputStreamReader in = new InputStreamReader(connection.getInputStream());
@@ -46,10 +46,10 @@ public class FetchFromApi {
 		}
 		connection.disconnect();
 
-		return SplitToHtmlEntries(CleanUpResponse(response));
+		return splitToHtmlEntries(cleanUpResponse(response));
 	}
 
-	private static String[] SplitToHtmlEntries(String response) {
+	private static String[] splitToHtmlEntries(String response) {
 		String[] ret = response.split("</tr>");
 		for (int i = 0; i < ret.length; i++) {
 			ret[i] = ret[i].replace("<tr>", "");
@@ -68,7 +68,7 @@ public class FetchFromApi {
 		return conn;
 	}
 
-	private static String CleanUpResponse(StringBuilder input){
+	private static String cleanUpResponse(StringBuilder input){
 		return input.toString().split("/></a></th></tr><tr>")[1].split("</tbody></table></div></div>")[0];
 	}
 }

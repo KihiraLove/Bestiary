@@ -1,4 +1,4 @@
-import Entries.BeastEntry;
+import entries.BeastEntry;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,20 +8,20 @@ import java.util.List;
 public class WriteToFile {
 	private WriteToFile(){}
 
-	public static List<String> SerializeEntriesToJson(List<List<BeastEntry>> entries){
+	public static List<String> serializeEntriesToJson(List<List<BeastEntry>> entries){
 		List<String> jsonStrings = new ArrayList<>();
 		for (List<BeastEntry> range : entries){
-			jsonStrings.add(SerializeRangeToJson(range));
+			jsonStrings.add(serializeRangeToJson(range));
 		}
 		return jsonStrings;
 	}
 
-	private static String SerializeRangeToJson(List<BeastEntry> range) {
+	private static String serializeRangeToJson(List<BeastEntry> range) {
 		return "";
 	}
 
 
-	public static void WriteSingleHtmlEntry(String entry){
+	public static void writeSingleHtmlEntry(String entry){
 		try (FileWriter writer = new FileWriter("/data/izzie.html")) {
 			writer.write(entry);
 			System.out.println("Entry written to izzy.html");
@@ -30,7 +30,7 @@ public class WriteToFile {
 		}
 	}
 
-	public static void WriteAllHtmlEntries(String[] entries){
+	public static void writeAllHtmlEntries(String[] entries){
 		try (FileWriter writer = new FileWriter("/data/jsondata.html")) {
 			for (String entry : entries){
 				writer.write(entry);

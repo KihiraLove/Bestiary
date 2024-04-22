@@ -1,4 +1,4 @@
-import Entries.BeastEntry;
+import entries.BeastEntry;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
