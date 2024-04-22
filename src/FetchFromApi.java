@@ -1,5 +1,6 @@
 import entries.BeastEntry;
 import entries.Ranges;
+import exceptions.HttpResponseException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,7 +23,7 @@ public class FetchFromApi {
 
 		for (int i = 0; i < ranges.getLengthOfRanges(); i++) {
 			allEntries.add(ParseEntry.ParseHtmlToEntries(getHtmlEntriesInRange(ranges.getLower(i), ranges.getUpper(i))));
-			System.out.println("Waiting 0.2 second to avoid DDOSing the OSRS WIKI");
+                System.out.println("Waiting 0.2 second to avoid DDOSing the OSRS WIKI");
 			Thread.sleep(200);
 		}
 
@@ -46,6 +47,10 @@ public class FetchFromApi {
 		}
 		connection.disconnect();
 
+        if (Config.getInstance().isLoggingEnabled()) {
+            String range = lower + "-" + upper;
+            WriteToFile.logResponse(response.toString(), range);
+        }
 		return splitToHtmlEntries(cleanUpResponse(response));
 	}
 
@@ -69,6 +74,6 @@ public class FetchFromApi {
 	}
 
 	private static String cleanUpResponse(StringBuilder input){
-		return input.toString().split("/></a></th></tr><tr>")[1].split("</tbody></table></div></div>")[0];
+		return input.toString().split("/></a></span></th></tr><tr>")[1].split("</tbody></table></div></div>")[0];
 	}
 }

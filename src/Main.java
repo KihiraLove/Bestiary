@@ -1,4 +1,5 @@
 import entries.BeastEntry;
+import exceptions.HttpResponseException;
 
 import java.io.IOException;
 import java.util.List;
@@ -6,6 +7,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 	    try {
+			Config.getInstance().enableLogging();
 		    List<List<BeastEntry>> allEntries = FetchFromApi.fetchAllEntries();
 			//WriteToFile.SerializeEntriesToJson(allEntries);
 
