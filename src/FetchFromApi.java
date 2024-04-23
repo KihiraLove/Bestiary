@@ -22,7 +22,7 @@ public class FetchFromApi {
 		List<List<BeastEntry>> allEntries = new ArrayList<>();
 
 		for (int i = 0; i < ranges.getLengthOfRanges(); i++) {
-			allEntries.add(ParseEntry.ParseHtmlToEntries(getHtmlEntriesInRange(ranges.getLower(i), ranges.getUpper(i))));
+			allEntries.add(ParseEntry.parseHtmlToEntries(getHtmlEntriesInRange(ranges.getLower(i), ranges.getUpper(i))));
                 System.out.println("Waiting 0.2 second to avoid DDOSing the OSRS WIKI");
 			Thread.sleep(200);
 		}
@@ -50,6 +50,7 @@ public class FetchFromApi {
         if (Config.getInstance().isLoggingEnabled()) {
             String range = lower + "-" + upper;
             WriteToFile.logResponse(response.toString(), range);
+			System.out.println("HTML fetched from range: " + lower + " - " + upper + " logged to file");
         }
 		return splitToHtmlEntries(cleanUpResponse(response));
 	}
@@ -74,6 +75,9 @@ public class FetchFromApi {
 	}
 
 	private static String cleanUpResponse(StringBuilder input){
+		if (Config.getInstance().isLoggingEnabled()){
+			System.out.println("Cleaning up response");
+		}
 		return input.toString().split("/></a></span></th></tr><tr>")[1].split("</tbody></table></div></div>")[0];
 	}
 }

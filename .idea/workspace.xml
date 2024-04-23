@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08d48948-b445-49c9-bc7c-cdec88bdc248" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FileLocation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/FailedDirectoryCreationException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FetchFromApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FetchFromApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HttpResponseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/HttpResponseException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ParseEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParseEntry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteToFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteToFile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,6 +104,8 @@
       <workItem from="1713788655175" duration="45000" />
       <workItem from="1713788863531" duration="1280000" />
       <workItem from="1713791104845" duration="3168000" />
+      <workItem from="1713859645314" duration="457000" />
+      <workItem from="1713863237658" duration="1282000" />
     </task>
     <servers />
   </component>

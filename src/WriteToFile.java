@@ -41,11 +41,6 @@ public class WriteToFile {
 			System.out.println("Logged response for range :" + range);
 		} catch (IOException e) {
 			System.out.println("An error occurred: " + e.getMessage());
-            try {
-                generateDirectories();
-            } catch (FailedDirectoryCreationException ex) {
-                throw new RuntimeException(ex);
-            }
         }
 	}
 
@@ -60,7 +55,7 @@ public class WriteToFile {
 		}
 	}
 
-	private static void generateDirectories() throws FailedDirectoryCreationException {
+	public static void generateDirectories() throws FailedDirectoryCreationException {
 		try {
 			Files.createDirectories(FileLocation.getLogsPath());
 			System.out.println("Data and Logs directory created");
