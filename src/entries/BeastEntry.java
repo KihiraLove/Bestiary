@@ -1,6 +1,9 @@
 package entries;
 
 import java.time.LocalDate;
+import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class BeastEntry {
 	public static class ImageEntry {
@@ -23,6 +26,16 @@ public class BeastEntry {
 			this.dataFileWidth = dataFileWidth;
 			this.dataFileHeight = dataFileHeight;
 		}
+		public ImageEntry(String json) {
+			this.title = extract(json, "title");
+			this.altText = extract(json, "altText");
+			this.imageLink = extract(json, "imageLink");
+			this.imageWidth = Integer.parseInt(Objects.requireNonNull(extract(json, "imageWidth")));
+			this.imageHeight = Integer.parseInt(Objects.requireNonNull(extract(json, "imageHeight")));
+			this.scrset = extract(json, "scrset");
+			this.dataFileWidth = Integer.parseInt(Objects.requireNonNull(extract(json, "dataFileWidth")));
+			this.dataFileHeight = Integer.parseInt(Objects.requireNonNull(extract(json, "dataFileHeight")));
+		}
 		public ImageEntry() {
 			this.title = null;
 			this.altText = null;
@@ -41,6 +54,18 @@ public class BeastEntry {
 		public String getScrset() { return scrset; }
 		public int getDataFileWidth() { return dataFileWidth; }
 		public int getDataFileHeight() { return dataFileHeight; }
+		public String toString() {
+			return "{"
+					+ "\"altText\":\"" + altText + "\","
+					+ "\"imageLink\":\"" + imageLink + "\","
+					+ "\"title\":\"" + title + "\","
+					+ "\"imageWidth\":" + imageWidth + ","
+					+ "\"imageHeight\":" + imageHeight + ","
+					+ "\"scrset\":\"" + scrset + "\","
+					+ "\"dataFileWidth\":" + dataFileWidth + ","
+					+ "\"dataFileHeight\":" + dataFileHeight
+					+ "}";
+		}
 	}
 	private final String name;
 	private final String altIdentifier;
@@ -166,5 +191,14 @@ public class BeastEntry {
 				+ "\"dataFileWidth\":" + image.dataFileWidth + ","
 				+ "\"dataFileHeight\":" + image.dataFileHeight
 				+ "}";
+	}
+
+	private static String extract(String json, String key) {
+		Pattern pattern = Pattern.compile("\"" + key + "\":\"(.*?)\"|\"" + key + "\":(\\d+)");
+		Matcher matcher = pattern.matcher(json);
+		if (matcher.find()) {
+			return matcher.group(1) != null ? matcher.group(1) : matcher.group(2);
+		}
+		return null;
 	}
 }
